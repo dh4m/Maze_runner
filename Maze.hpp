@@ -51,10 +51,14 @@ public:
 	void	Maze_generate(int width, int height, bool anime);
 	void	Maze_search(int algo, int s_i, int s_j, int d_i, int d_j);
 private:
-	void	Maze_gen_DFS(int i, int j, bool anime);
+	void	_Maze_gen_DFS(int i, int j, bool anime);
 
-	void	Maze_bfs_search(bool anime, int s_i, int s_j, int d_i, int d_j);
-	int		Maze_dfs_search(bool anime, int s_i, int s_j, int d_i, int d_j);
+	void	_Maze_bfs_search(bool anime, int s_i, int s_j, int d_i, int d_j);
+	int		_Maze_dfs_search(bool anime, int s_i, int s_j, int d_i, int d_j);
+
+	void	_maze_reset(void);
+	void	_maze_visit_reset(void);
+	void	_maze_search_reset(void);
 
 	Space	_maze[MAX_LEN][MAX_LEN];
 	int		_width;
