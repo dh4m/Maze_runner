@@ -4,6 +4,17 @@
 # define MAZE_HPP
 
 # define NUM_DIR 24
+# define MAX_LEN 30
+
+struct Coordi
+{
+	Coordi() : i(0), j(0) {}
+	Coordi(int _i, int _j) : i(_i), j(_j) {}
+	Coordi(int _i, int _j, int _t) : i(_i), j(_j), trace(_t) {}
+	int i;
+	int j;
+	int trace;
+};
 
 struct Space
 {
@@ -40,22 +51,27 @@ public:
 	void	Maze_generate(int width, int height, bool anime);
 	void	Maze_search(int algo, int s_i, int s_j, int d_i, int d_j);
 private:
-	void	Maze_bfs_search(bool anime, int s_i, int s_j, int d_i, int d_j);
-	void	Maze_dfs_search(bool anime, int s_i, int s_j, int d_i, int d_j);
 	void	Maze_gen_DFS(int i, int j, bool anime);
-	void	Maze_search_DFS(int i, int j, bool anime);
 
-	Space	_maze[30][30];
+	void	Maze_bfs_search(bool anime, int s_i, int s_j, int d_i, int d_j);
+	int		Maze_dfs_search(bool anime, int s_i, int s_j, int d_i, int d_j);
+
+	Space	_maze[MAX_LEN][MAX_LEN];
 	int		_width;
 	int		_height;
 	bool	_gen_anime;
 	bool	_search_anime;
 
-	static const int _dir[24][4];
+	Coordi	_path[MAX_LEN * MAX_LEN];
+	int		_path_len;
 
+	static const int _dir[NUM_DIR][4];
+
+	// friend mfc
+
+	// copy forbidden
 	Maze	&operator=(const Maze &copy);
 	Maze(const Maze &copy);
-	// friend mfc
 };
 
 #endif
