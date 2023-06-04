@@ -9,7 +9,10 @@ Queue::~Queue(void)
 
 void	Queue::Push(int i, int j, int t)
 {
-	_queue[_tail++] = Coordi(i, j, t);
+	_queue[_tail].i = i;
+	_queue[_tail].j = j;
+	_queue[_tail].trace = t;
+	_tail++;
 }
 
 Coordi	Queue::Pop(void)
